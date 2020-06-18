@@ -1,18 +1,12 @@
-class Foo:
-   
-    def __init__(self, a):
-        for i in a:
-            self.__setattr__(i, a[i])
-   
-    def __getattr__(self, name):
- 
-        try:
-            return self.__getattribute__(name)
-        except Exception:
-            return None
-           
-   
- 
-a = Foo({"bar": "bar2"})
-print(a.bar)
+from destructure import Destructure
+
+
+class Foo(Destructure):
+    def __init__(self, dictionary={}):
+        super().__init__(dictionary)
+        self.fname = "ranga"
+
+
+a = Foo({"test": "test"})
+print(a.test)
 
